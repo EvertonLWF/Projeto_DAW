@@ -8,8 +8,15 @@ $(function(){
 	// 	$('.Dashboard-admin').attr('data-teste', teste).toggle();
 
 	// });
-
+	$('.redes-sociais').bind( 'mouseover',function(){
+			$(this).css('height','250px');
+	});
+	$('.redes-sociais').bind( 'mouseout',function(){
+			$(this).css('height','50px');
+	});
+	
 	//botoes admin-cadastro ->
+	
 	$('#btn-cadastro-users').bind('click',function(){
 		$('.Dashboard-admin-cadastro').hide();
 		$('.cadastro-admin-users').toggle();
