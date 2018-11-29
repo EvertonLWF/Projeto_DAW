@@ -1,13 +1,14 @@
 <?php 
+	echo "<br>".$_SERVER['PHP_SELF']."<br>";
 	require_once('../../conect.php');
 	require_once('../../function.php');
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<link href="../../../dist/hamburgers.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="../../../style.css">
 	<title>index.html</title>
 </head>
@@ -19,16 +20,11 @@
 		    </div>
 		  </div>
 		<ul class="ul">
-			<li id="btn1" class="li">Dashboard</li>
-			<li id="btn2" class="li">Cadastro</li>
-			<li id="btn3" class="li">Monitor</li>
-			<li id="btn4-a" class="li">Sair</li>
+			<li id="btn1" class="li">Cadastro</li>
+			<li id="btn2" class="li">Termos de utilização</li>
+			<li id="btn3" class="li">Serviços</li>
+			
 		</ul>
-		<form>
-            <div class="identificador">              
-              <h3>Seja Bem vindo: Admin </h3>
-            </div>
-          </form>
 	</nav>
 	<div class="login">
 		<input class="input-login" type="email" name="email" placeholder="Digite o email"><br><br>
@@ -40,9 +36,8 @@
 	</div>
 	<div class="div-btn">
 		<ul class="ul-btn">
-			<li id="btn5" class="li-btn">Dashboard</li>
-			<li id="btn6" class="li-btn">Cadastro</li>
-			<li id="btn7" class="li-btn">Monitor</li>			
-			<li id="btn8-a" class="li-btn">Sair</li>
+			<li id="btn5" class="li-btn">Cadastro</li>
+			<li id="btn6" class="li-btn">Termos de utilização</li>
+			<li id="btn7" class="li-btn">Serviços</li>			
 		</ul>
 	</div>

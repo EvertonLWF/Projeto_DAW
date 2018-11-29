@@ -5,7 +5,18 @@ body{
 	background-color: #f8f9fa;
 	margin:0;
 	font-family: 'Montserrat', sans-serif;
-	position: relative;
+}
+table{
+	
+	width: 100%;
+}
+th{
+
+	border: solid;
+	border-color: #00838f;
+}
+thead{
+	background-color: red;
 }
 .terms{
 	margin: 25px;
@@ -18,6 +29,7 @@ body{
 	width: 60%;
 }
 .Dashboard-admin-map{
+	margin-top: 40px;
 	display: none;
 	position: relative;
 	float: left;
@@ -25,16 +37,19 @@ body{
 	border: none;
 }
 .Dashboard-admin-medic{
+	margin-top: 40px;
 	display: none;
 	border: solid;
 	position: relative;
-	float: left	width:640px;
+	float: left;
+	width:640px;
 	height:480px;
 	padding-top: 10px;
 	text-align: left;
 	border-color: black;
 }
 .Dashboard-admin-user{
+	margin-top: 40px;
 	display: none;
 	border: solid;
 	position: relative;
@@ -46,6 +61,7 @@ body{
 	border-color: black;
 }
 .Dashboard-admin-atend{
+	margin-top: 40px;
 	display: none;
 	border: solid;
 	position: relative;
@@ -57,6 +73,7 @@ body{
 	border-color: black;
 }
 .Dashboard-admin-device{
+	margin-top: 40px;
 	display: none;
 	border: solid;
 	position: relative;
@@ -68,6 +85,7 @@ body{
 	border-color: black;
 }
 .Dashboard-admin-emerg{
+	margin-top: 40px;
 	display: none;
 	border: solid;
 	position: relative;
@@ -81,13 +99,14 @@ body{
 .Dashboard{
 	border: solid;
 	border-color: yellow;
-	position: relative;
+	margin-top: 40px;
 	float: left;
 	width: 25%;
 	height: 494px;
 	text-align: left;
 	padding-right: 10px;
 }
+
 .cadastro-admin-users{
 	display: none;
 	border: solid;
@@ -137,51 +156,92 @@ body{
 
 }
 .home{
-	background-color: white;
+	background-color: #00C9DB;
 	width: 100%;
 	height: 660px;
 	margin:  35px 0 0 0;
 	padding: 0;
 	overflow: hidden;
 	text-align: center;
+
 }
 .btn-admin{
-	border-radius: 20px;
+	border-radius: 3px;
 	width: 200px;
 	height: 50px;
 	color: #FFF;
 	background-color: #00838f;
 	font-size: 20px;
 	cursor: pointer;
+	margin-left: 60px;
 }
+
 .medic{
-	background-color: green ;
+	background-color: #42CFDB ;
 	width: 100%;
-	height: 550px;
-	padding: 0;
+	height: 572px;
 	overflow: hidden;
 	text-align: center;
+	color: grey;
+	
 }
 .services{
-	background-color: blue;
+	background-color: #F8F9FA;
 	width: 100%;
 	height: 670px;
 	padding: 0;
 	overflow: hidden;
 	text-align: center;
 }
-.redes-sociais{
-	background-color: yellow;
+.redes-sociais {
+	background-color: #00838F;
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	text-align: left;
+	cursor: pointer;
+	color: white;
+
+}
+.input-cont{
+	border-radius: 3px;
+	width: 100%;
+}
+.footer-index textarea{
+	border-radius: 3px;
 	width: 100%;
 	height: 50px;
-	padding: 0;
-	position: absolute;
-	bottom:0;
-	overflow: hidden;
+}
+.input-cont-btn{
+	border-radius: 3px;
+	width: 101.5%;
+}
+.redes-sociais-nave{
+	float: left;
+	width: 33%;
 	text-align: center;
-
-	
-	
+}
+.redes-sociais-cont{
+	float: left;
+	width: 34%;
+	text-align: center;
+}
+.redes-sociais-soci{
+	float: right;
+	width: 33%;
+	text-align: center;
+}
+.footer-index{
+	float: left;
+	width: 100%;
+	position: relative;
+	left: 0;
+	height: 300px;
+	padding: 0;
+	margin-top: 5px;
+	text-align: left;
+	padding-left: 30px;
+	display: none;
 }
 .login{
 	position: fixed;
@@ -225,13 +285,15 @@ body{
 	color:#FFF;
 }
 .divMedic{
-	width: 100%;
+	padding: 60px;
 	float: left;
 	border-radius: 3px;
-	height: 100%;
+	width: 90%;
+	
 }
 .medic-content{
 	display: none;
+	padding: 25px 0 25px 0;
 }
 
 
@@ -282,7 +344,7 @@ body{
 	padding: 0 10px;
 	line-height: 45px;
 	cursor: pointer;
-	font-size: 25px;
+	font-size: 20px;
 }
 .li-U{
 	color: #FFF;
@@ -361,6 +423,49 @@ body{
 	color: white;
 }
 
+
+
+.flip-card {
+  background-color: transparent;
+  width: 200px;
+  height: 200px;
+  perspective: 700px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+  z-index: 2;
+}
+
+.flip-card-back {
+  background-color: #2980b9;
+  color: white;
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+
 @media only screen  and ( max-width: 870px){
 	.nav1{
 		width: 100%;
@@ -424,7 +529,6 @@ body{
 		
 		width: 100%;
 		height: 400px;
-		margin: auto;
 		margin-top: 100px;
 		border: solid;
 		border-color: red;
@@ -436,7 +540,6 @@ body{
 		
 		width: 100%;
 		height: 400px;
-		margin: auto;
 		margin-top: 100px;
 		border: solid;
 		border-color: green;
@@ -446,7 +549,6 @@ body{
 
 		width: 100%;
 		height: 400px;
-		margin: auto;
 		margin-top: 100px;
 		border: solid;
 		border-color: blue;
@@ -456,11 +558,7 @@ body{
 		margin-right: 40px;
 	}
 	.divMedic{
-		width: 100%;
-		border-radius: 5px;
-		background-color: #00bcd4;
-		height: 400px;
-		margin-left: 45px;
+		
 	}
 	.login{
 		position: absolute;

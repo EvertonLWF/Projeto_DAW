@@ -1,5 +1,5 @@
 <?php 
-	require_once("php/logout.php");
+require_once("php/logout.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,11 +12,11 @@
 </head>
 <body>
 	<nav class="nav1">
-		  <div class="hamburger hamburger--elastic">
-   			 <div class="hamburger-box">
-		      <div class="hamburger-inner"></div>
-		    </div>
-		  </div>
+		<div class="hamburger hamburger--elastic">
+			<div class="hamburger-box">
+				<div class="hamburger-inner"></div>
+			</div>
+		</div>
 		<ul class="ul">
 			<li id="btn1" class="li">Home</li>
 			<li id="btn2" class="li">Serviços</li>
@@ -24,15 +24,15 @@
 			<li id="btn4" class="li">Login</li>
 		</ul>
 		<form>
-            <div class="busca">              
-              <input type="text" class="busca-btn" placeholder=" Busca">
-              <button class="btn"></button>
-            </div>
-          </form>
+			<div class="busca">              
+				<input type="text" class="busca-btn" placeholder=" Busca">
+				<button class="btn"></button>
+			</div>
+		</form>
 	</nav>
 	<div class="login">
 		<input class="input-login" type="email" name="email" placeholder="Digite o email"><br><br>
-	
+		
 		<input class="input-login-senha" type="password" name="senha" placeholder="Digite a senha"><br><br>
 
 		<input type="button" class="btn-login" value="Login" placeholder="Login"><br><br>

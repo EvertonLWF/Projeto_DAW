@@ -8,11 +8,28 @@ $(function(){
 	// 	$('.Dashboard-admin').attr('data-teste', teste).toggle();
 
 	// });
-	$('.redes-sociais').bind( 'mouseover',function(){
-			$(this).css('height','250px');
+	//footer effects
+	$('.redes-sociais-nave').bind('click',function(){
+		$('.footer-index').hide();
+		$(this).find('div').toggle();
+		$('html').animate({
+			"scrollTop": medic+300
+		},1000);
 	});
-	$('.redes-sociais').bind( 'mouseout',function(){
-			$(this).css('height','50px');
+
+	$('.redes-sociais-cont').bind('click',function(){
+		$('.footer-index').hide();
+		$(this).find('div').toggle();
+		$('html').animate({
+			"scrollTop": medic+300
+		},1000);
+	});
+	$('.redes-sociais-soci').bind('click',function(){
+		$('.footer-index').hide();
+		$(this).find('div').toggle();
+		$('html').animate({
+			"scrollTop": medic+300
+		},1000);
 	});
 	
 	//botoes admin-cadastro ->
@@ -78,9 +95,12 @@ $(function(){
 	});
 	$('#opcao-1').bind('mouseover', function(){
 		$('#txt1').fadeToggle();
+		$(this).css('width',"200");
 	});
 	$('#opcao-1').bind('mouseout', function(){
 		$('#txt1').toggle();
+		$(this).css('width',"150");
+
 	});
 	$('#opcao-2').bind('mouseover', function(){
 		$('#txt2').fadeToggle();
@@ -119,33 +139,56 @@ $(function(){
 		},1000);
 	});
 
-
+	//sublinado botoes text
 	$('.li').hover(function(){
 		$(this).css('text-decoration','underline');
 	},function(){
 		$(this).css('text-decoration','none');
 	});
 
+	$('.redes-sociais h3').hover(function(){
+		$(this).css('text-decoration','underline');
+	},function(){
+		$(this).css('text-decoration','none');
+	});
+
+
 	//botões medicos
 	$('.h1-medic-urol').bind('click',function(){
-		$('.medic-content').hide('slow');
-		$('.urol').show('slow');
+		$('.urol').toggle('slow');
+		$('.pedi').hide('slow');
+		$('.psiq').hide('slow');
+		$('.card').hide('slow');
+		$('.endo').hide('slow');
+		
 	});
 	$('.h1-medic-pedi').bind('click',function(){
-		$('.medic-content').hide('slow');
-		$('.pedi').show('slow');
+		$('.urol').hide('slow');
+		$('.pedi').toggle('slow');
+		$('.psiq').hide('slow');
+		$('.card').hide('slow');
+		$('.endo').hide('slow');
 	});
 	$('.h1-medic-psiq').bind('click',function(){
-		$('.medic-content').hide('slow');
-		$('.psiq').show('slow');
+		$('.urol').hide('slow');
+		$('.pedi').hide('slow');
+		$('.psiq').toggle('slow');
+		$('.card').hide('slow');
+		$('.endo').hide('slow');
 	});
 	$('.h1-medic-card').bind('click',function(){
-		$('.medic-content').hide('slow');
-		$('.card').show('slow');
+		$('.urol').hide('slow');
+		$('.pedi').hide('slow');
+		$('.psiq').hide('slow');
+		$('.card').toggle('slow');
+		$('.endo').hide('slow');
 	});
 	$('.h1-medic-endo').bind('click',function(){
-		$('.medic-content').hide('slow');
-		$('.endo').show('slow');
+		$('.urol').hide('slow');
+		$('.pedi').hide('slow');
+		$('.psiq').hide('slow');
+		$('.card').hide('slow');
+		$('.endo').toggle('slow');
 	});
 	
 
@@ -167,6 +210,8 @@ $(function(){
 			"scrollTop": medic -65
 		},1000);
 	});
+
+	//responsividade
 	$('#btn5').bind('click',function(){
 		$('html').animate({
 			"scrollTop": home -300
@@ -242,11 +287,11 @@ $(function(){
 });
 var forEach=function(t,o,r){if("[object Object]"===Object.prototype.toString.call(t))for(var c in t)Object.prototype.hasOwnProperty.call(t,c)&&o.call(r,t[c],c,t);else for(var e=0,l=t.length;l>e;e++)o.call(r,t[e],e,t)};
 
-    var hamburgers = document.querySelectorAll(".hamburger");
-    if (hamburgers.length > 0) {
-      forEach(hamburgers, function(hamburger) {
-        hamburger.addEventListener("click", function() {
-          this.classList.toggle("is-active");
-        }, false);
-      });
-    }
+var hamburgers = document.querySelectorAll(".hamburger");
+if (hamburgers.length > 0) {
+	forEach(hamburgers, function(hamburger) {
+		hamburger.addEventListener("click", function() {
+			this.classList.toggle("is-active");
+		}, false);
+	});
+}

@@ -1,14 +1,51 @@
+<?php 
+	$res = selectMedic($pdo);
+	var_dump($res);
+	
+?>
+
+
 <div class="home">
 	<div class="Dashboard">
-		<button class="btn-admin" id="btn-admin-medic" data-teste="medico">Medicos</button><br><br>
-		<button class="btn-admin" id="btn-admin-user" data-teste="Cuidadores">Cuidadores</button><br><br>
+		<button class="btn-admin" id="btn-admin-medic">Medicos</button><br><br>
+		<button class="btn-admin" id="btn-admin-user">Cuidadores</button><br><br>
 		<button class="btn-admin" id="btn-admin-device">Dispositivos</button><br><br>
 		<button class="btn-admin" id="btn-admin-map">Mapa de atividade</button><br><br>
 		<button class="btn-admin" id="btn-admin-emerg">Emergencia</button><br><br>
 		<button class="btn-admin" id="btn-admin-atend">Atendimentos</button><br><br>
 	</div>
 	<iframe class="Dashboard-admin Dashboard-admin-map"src="https://www.google.com/maps/d/embed?mid=1Xqg02gW9YjHTfSvtXUxD2JG343xGsHZI&hl=pt-BR" width="640" height="480"></iframe>
-	<div class="Dashboard-admin Dashboard-admin-medic">Medicos</div>
+	<div class="Dashboard-admin Dashboard-admin-medic">
+		
+		<table>
+			<h3>Lista de Médicos cadastrados</h3>
+			<thead>
+				<th scope="column">Nome</th>
+				<th scope="column">Especialização</th>
+				<th scope="column">Email</th>
+				<th scope="column">Crm</th>
+			</thead>
+			<tbody>
+			<?php
+				foreach ($res as $key) {
+					$html = '<br><tr>
+					<td>'.$key['nome'].'</td>
+					<td>'.$key['especializção'].'</td>
+					<td>'.$key['email_user'].'</td>
+					<td>'.$key['crm'].'</td>
+					</tr>';
+					echo $html;
+				}
+			?>
+		</tbody>
+		</table>
+
+
+
+
+
+
+	</div>
 	<div class="Dashboard-admin Dashboard-admin-user">Usuarios</div>
 	<div class="Dashboard-admin Dashboard-admin-device">Dispositivos</div>
 	<div class="Dashboard-admin Dashboard-admin-emerg">Emergencias</div>

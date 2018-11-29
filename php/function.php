@@ -22,29 +22,21 @@
 		$sql = $sql->fetch();
 		return $sql;
 	}
-	function cadastro_etapa_1($ipv4,$pdo){
-		$sql = "SELECT * FROM users WHERE ip = :ip";
-		$sql = $pdo->prepare($sql);
-		$sql->bindValue(':ip',$ipv4);
-		$sql->execute();
-		$sql = $sql->fetch();
-		return $sql;
-
-	}
-	function cadastro_etapa_2($ipv4,$pdo){
-		$sql = "INSERT INTO users (ip) VALUES (:ip)";
-		$sql = $pdo->prepare($sql);
-		$sql->bindValue(':ip',$ipv4);
-		$sql->execute();
-		$sql = $sql->fetch();
-		return $sql;
-
-	}
-	function cadastro_etapa_3($email,$key,$pdo){
-		$sql = "INSERT INTO users (email_users,key_user) VALUES (:email,:key)";
+	
+	function cadastro_etapa_1($email,$key,$pdo){
+		$sql = "INSERT INTO users (email_users,key_user,id) VALUES (:email,:key,:hash)";
+		$hash = md5(date('DMYhms').rand());
 		$sql = $pdo->prepare($sql);
 		$sql->bindValue(':email',$email);
 		$sql->bindValue(':key',$key);
+		$sql->bindValue(':hash',$hash);
+		$sql->execute();
+		$sql = $sql->fetch();
+		return $sql;
+	}
+	function selectMedic($pdo){
+		$sql = "SELECT nome,especialização,email_user,crm FROM medico JOIN ";
+		$sql = $pdo->prepare($sql);
 		$sql->execute();
 		$sql = $sql->fetch();
 		return $sql;

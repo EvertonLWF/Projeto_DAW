@@ -15,7 +15,7 @@ $assunto = "Cadastro novo usuario";
 $msn ="link -> ".$addr.":8081/Projeto_DAW/php/finalizarCadastro.php";
 $senha ="62378eve";
 
-$res =  cadastro_etapa_3($dest,$dest,$pdo);
+$res =  cadastro_etapa_1($dest,$dest,$pdo);
 if(isset($res) && !empty($res)){
 	$mail = new PHPMailer(true);
 	try{
