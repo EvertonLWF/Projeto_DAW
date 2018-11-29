@@ -1,13 +1,9 @@
-hr{
-	
-}
 body{
 	background-color: #f8f9fa;
 	margin:0;
 	font-family: 'Montserrat', sans-serif;
 }
 table{
-	
 	width: 100%;
 }
 th{
@@ -16,7 +12,11 @@ th{
 	border-color: #00838f;
 }
 thead{
-	background-color: red;
+	background-color: #00545C;
+}
+.Dashboard-admin h3{
+	text-align: center;
+	float: none;
 }
 .terms{
 	margin: 25px;
@@ -38,15 +38,16 @@ thead{
 }
 .Dashboard-admin-medic{
 	margin-top: 40px;
+	background-color: #00838f;
+	color: #FFF;
 	display: none;
-	border: solid;
+	
 	position: relative;
 	float: left;
 	width:640px;
 	height:480px;
 	padding-top: 10px;
 	text-align: left;
-	border-color: black;
 }
 .Dashboard-admin-user{
 	margin-top: 40px;
@@ -97,8 +98,6 @@ thead{
 	border-color: black;
 }
 .Dashboard{
-	border: solid;
-	border-color: yellow;
 	margin-top: 40px;
 	float: left;
 	width: 25%;

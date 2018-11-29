@@ -35,10 +35,10 @@
 		return $sql;
 	}
 	function selectMedic($pdo){
-		$sql = "SELECT nome,especialização,email_user,crm FROM medico JOIN ";
+		$sql = "SELECT nome,especialização,email_user,crm FROM medico JOIN users USING(id_user)";
 		$sql = $pdo->prepare($sql);
 		$sql->execute();
-		$sql = $sql->fetch();
+		$sql = $sql->fetchall();
 		return $sql;
 	}
 

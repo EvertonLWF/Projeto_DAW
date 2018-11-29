@@ -1,7 +1,6 @@
 <?php 
 	$res = selectMedic($pdo);
-	var_dump($res);
-	
+
 ?>
 
 
@@ -26,15 +25,17 @@
 				<th scope="column">Crm</th>
 			</thead>
 			<tbody>
+
+
 			<?php
-				foreach ($res as $key) {
-					$html = '<br><tr>
-					<td>'.$key['nome'].'</td>
-					<td>'.$key['especializção'].'</td>
-					<td>'.$key['email_user'].'</td>
-					<td>'.$key['crm'].'</td>
-					</tr>';
-					echo $html;
+			foreach ($res as $key){
+
+					$html= '<br><tr>
+						<td>'.$key['nome'].'</td>
+						<td>'.$key['especialização'].'</td>
+						<td>'.$key['email_user'].'</td>
+						<td>'.$key['crm'].'</td></tr>';
+						echo $html.'<hr>';
 				}
 			?>
 		</tbody>
@@ -46,10 +47,111 @@
 
 
 	</div>
-	<div class="Dashboard-admin Dashboard-admin-user">Usuarios</div>
-	<div class="Dashboard-admin Dashboard-admin-device">Dispositivos</div>
-	<div class="Dashboard-admin Dashboard-admin-emerg">Emergencias</div>
-	<div class="Dashboard-admin Dashboard-admin-atend">Atendimentos</div>
+	<div class="Dashboard-admin Dashboard-admin-user">
+		<table>
+			<h3>Lista de Cuidadores cadastrados</h3>
+			<thead>
+				<th scope="column">Nome</th>
+				<th scope="column">Especialização</th>
+				<th scope="column">Email</th>
+				<th scope="column">Crm</th>
+			</thead>
+			<tbody>
+
+
+			<?php
+			foreach ($res as $key){
+					$html= '<br><tr>
+						<td>'.$key['nome'].'</td>
+						<td>'.$key['especialização'].'</td>
+						<td>'.$key['email_user'].'</td>
+						<td>'.$key['crm'].'</td>';
+						echo $html;
+				}
+			?>
+		</tbody>
+		</table>
+
+
+
+	</div>
+	<div class="Dashboard-admin Dashboard-admin-device">
+		<table>
+			<h3>Lista de Dispositivos cadastrados</h3>
+			<thead>
+				<th scope="column">Nome</th>
+				<th scope="column">Especialização</th>
+				<th scope="column">Email</th>
+				<th scope="column">Crm</th>
+			</thead>
+			<tbody>
+
+
+			<?php
+			foreach ($res as $key){
+					$html= '<br><tr>
+						<td>'.$key['nome'].'</td>
+						<td>'.$key['especialização'].'</td>
+						<td>'.$key['email_user'].'</td>
+						<td>'.$key['crm'].'</td>';
+						echo $html;
+				}
+			?>
+		</tbody>
+		</table>
+	</div>
+	<div class="Dashboard-admin Dashboard-admin-emerg">
+		<table>
+			<h3>Lista de Emergencias ativas</h3>
+			<thead>
+				<th scope="column">Nome</th>
+				<th scope="column">Especialização</th>
+				<th scope="column">Email</th>
+				<th scope="column">Crm</th>
+				<th scope="column">Operações</th>
+			</thead>
+			<tbody>
+
+
+			<?php
+			foreach ($res as $key){
+					$html= '<br><tr>
+						<td>'.$key['nome'].'</td>
+						<td>'.$key['especialização'].'</td>
+						<td>'.$key['email_user'].'</td>
+						<td>'.$key['crm'].'</td>
+						<td>'.$key['crm'].'</td>';
+						echo $html;
+				}
+			?>
+		</tbody>
+		</table>
+	</div>
+	<div class="Dashboard-admin Dashboard-admin-atend">
+		<table>
+			<h3>Lista de Atendimentos</h3>
+			<thead>
+				<th scope="column">Nome</th>
+				<th scope="column">Especialização</th>
+				<th scope="column">Email</th>
+				<th scope="column">Crm</th>
+			</thead>
+			<tbody>
+
+
+			<?php
+			foreach ($res as $key){
+					$html= '<br><tr>
+						<td>'.$key['nome'].'</td>
+						<td>'.$key['especialização'].'</td>
+						<td>'.$key['email_user'].'</td>
+						<td>'.$key['crm'].'</td>';
+						echo $html;
+				}
+			?>
+		</tbody>
+		</table>
+	</div>
 </div>
 <div class="services">
 	<div class="Dashboard">
