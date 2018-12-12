@@ -29,79 +29,39 @@
 		<div class="h1-medic h1-medic-urol">Urologia</div>
 
 		<div class="medic-content urol">
-
-			<div class="flip-card">
-				<div class="flip-card-inner">
-					<div class="flip-card-front">
-						<img src="img/avatar.png" alt="Avatar" style="width:200px;height:200px;">
-					</div>
-					<div class="flip-card-back">
-						<h1>John Doe</h1> 
-						<p>Architect & Engineer</p> 
-						<p>We love that guy</p>
-					</div>
-				</div>
-			</div>
+			<?php echo card_Ur($pdo); ?>
 		</div>
 			<hr>
 			<div class="h1-medic h1-medic-pedi">Pediatria</div>
 			
-			<div class="medic-content pedi"><div class="flip-card">
-				<div class="flip-card-inner">
-					<div class="flip-card-front">
-						<img src="img/avatar.png" alt="Avatar" style="width:200px;height:200px;">
-					</div>
-					<div class="flip-card-back">
-						<h1>John Doe</h1> 
-						<p>Architect & Engineer</p> 
-						<p>We love that guy</p>
-					</div>
-				</div>
-			</div></div>
+			<div class="medic-content pedi">
+				
+				<?php echo card_Pe($pdo); ?>
+
+			</div>
 			<hr>
 			<div class="h1-medic h1-medic-psiq">Psiquiatria</div>
 			
-			<div class="medic-content psiq"><div class="flip-card">
-				<div class="flip-card-inner">
-					<div class="flip-card-front">
-						<img src="img/avatar.png" alt="Avatar" style="width:200px;height:200px;">
-					</div>
-					<div class="flip-card-back">
-						<h1>John Doe</h1> 
-						<p>Architect & Engineer</p> 
-						<p>We love that guy</p>
-					</div>
-				</div>
-			</div></div>
+			<div class="medic-content psiq">
+				
+				<?php echo card_Ps($pdo); ?>
+
+			</div>
 			<hr>
 			<div class="h1-medic h1-medic-card">Cardiologia</div>
 			
-			<div class="medic-content card"><div class="flip-card">
-				<div class="flip-card-inner">
-					<div class="flip-card-front">
-						<img src="img/avatar.png" alt="Avatar" style="width:200px;height:200px;">
-					</div>
-					<div class="flip-card-back">
-						<h1>John Doe</h1> 
-						<p>Architect & Engineer</p> 
-						<p>We love that guy</p>
-					</div>
-				</div>
-			</div></div>
+			<div class="medic-content card">
+				
+				<?php echo card_Ca($pdo); ?>
+
+			</div>
 			<hr>
 			<div class="h1-medic h1-medic-endo">Endocrinilogia</div>
 			
-			<div class="medic-content endo"><div class="flip-card">
-				<div class="flip-card-inner">
-					<div class="flip-card-front">
-						<img src="img/avatar.png" alt="Avatar" style="width:200px;height:200px;">
-					</div>
-					<div class="flip-card-back">
-						<h1>John Doe</h1> 
-						<p>Architect & Engineer</p> 
-						<p>We love that guy</p>
-					</div>
-				</div>
-			</div></div>
+			<div class="medic-content endo">
+				
+				<?php echo card_En($pdo); ?>
+
+			</div>
 			<hr></div>
 		</div>
