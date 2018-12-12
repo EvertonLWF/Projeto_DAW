@@ -16,12 +16,12 @@
 		<ul class="ul">
 			<li id="btn1" class="li">Pacientes</li>
 			<li id="btn2" class="li">Prontuarios</li>
-			<li id="btn3" class="li">Monitor</li>
-			<li id="btn4-m" class="li">Sair</li>
+			<li id="btn3" class="li">Preferências</li>
+			<li id="btn4-m" class="sair li">Sair</li>
 		</ul>
 		<form>
 			<div class="identificador">              
-				<h3>Seja Bem vindo: Medico </h3>
+				Seja Bem vindo: <?php echo($_SESSION['email']);?>
 			</div>
 		</form>
 	</nav>
@@ -37,7 +37,7 @@
 		<ul class="ul-btn">
 			<li id="btn5" class="li-btn">Dashboard</li>
 			<li id="btn6" class="li-btn">Cadastro</li>
-			<li id="btn7" class="li-btn">Monitor</li>			
+			<li id="btn7" class="li-btn">Preferências</li>			
 			<li id="btn8-m" class="li-btn">Sair</li>
 		</ul>
 	</div>

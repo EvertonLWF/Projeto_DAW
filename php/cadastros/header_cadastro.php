@@ -1,15 +1,14 @@
 <?php 
-	echo "<br>".$_SERVER['PHP_SELF']."<br>";
-	require_once('../../conect.php');
-	require_once('../../function.php');
+	require_once('../conect.php');
+	require_once('../function.php');
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
-	<link href="../../../dist/hamburgers.css" rel="stylesheet">
+	<link href="../../dist/hamburgers.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="../../../style.css">
+	<link rel="stylesheet" type="text/css" href="../../style.css">
 	<title>index.html</title>
 </head>
 <body>

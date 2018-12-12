@@ -22,11 +22,11 @@
 			<li id="btn1" class="li">Dashboard</li>
 			<li id="btn2" class="li">Cadastro</li>
 			<li id="btn3" class="li">Monitor</li>
-			<li id="btn4-a" class="li">Sair</li>
+			<li id="btn4-a" class="sair li">Sair</li>
 		</ul>
 		<form>
             <div class="identificador">              
-              <h3>Seja Bem vindo: Admin </h3>
+              Seja Bem vindo: <?php echo($_SESSION['email']);?>
             </div>
           </form>
 	</nav>

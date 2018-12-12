@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>MQTT</title>
+</head>
+<body>
+	<div id="sub" >
+		<form class="sub" action="subscribe.php" method="POST">
+			
+				<h3>Subscribe</h3><br><br>
+				<input type="text" name="client_id" placeholder="Client_id"><br><br><br>
+				<input type="text" name="topic" placeholder="Topic"><br><br><br>
+				<input type="text" name="server" placeholder="Server"><br><br><br>
+				<input type="text" name="port" placeholder="Port"><br><br><br>
+				<input type="text" name="user_name" placeholder="User_name"><br><br><br>
+				<input type="Password" name="password" placeholder="Password"><br><br><br>
+				<input type="submit" id="send-sub" value="Start">
+				<input id="sub_btn" type="button" value="Stop"></input>
+			
+		</form>
+		
+	</div>
+	<div id="pub">
+		<form class="pub" action="publish.php" method="POST">
+			
+				<h4>Publish</h4><br><br>
+				<input type="text" name="client_id" placeholder="Client_id"><br><br><br>
+				<input type="text" name="topic" placeholder="Topic"><br><br><br>
+				<input type="text" name="server" placeholder="Server"><br><br><br>
+				<input type="text" name="port" placeholder="Port"><br><br><br>
+				<input type="text" name="user_name" placeholder="User_name"><br><br><br>
+				<input type="Password" name="password" placeholder="Password"><br><br><br>
+				<input type="text" name="msn" placeholder="Menssage"><br><br><br>
+				<input type="submit" id="send-pub" value="Start">
+				<input id="pub_btn">Stop</input>
+			
+		</form>
+	</div>
+
+	<div class="chart-container">
+		<canvas class="Graphc" id="Graphc"></canvas>
+		<div class="temp"> <h3 id="h3"></h3></div>
+	</div>
+
+	<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="Graphic/Chart.js"></script>
+	<script type="text/javascript" src="Graphic/script.js"></script>
+	</body>
+</html>

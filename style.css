@@ -14,6 +14,93 @@ th{
 thead{
 	background-color: #00545C;
 }
+.sair{
+	margin-right: 25px;
+	position: fixed;
+	right: 15px;
+	margin-top: 10px;
+	color: white;
+}
+.identificador{ 
+	margin-right: 25px;
+	font-size: 20px;
+	float: left;
+	position: fixed;
+	right: 100px;
+	margin-top: 10px;
+	color: white;
+}
+.dados{
+	display: unset;
+}
+.ativo_status{
+	padding: 0;
+	background-color: #00545C; /*azul forte*/
+	width: 90px;
+	cursor: pointer;
+	border: 0;
+	
+}
+.ativo_on{
+	padding: 0;
+	background-color: yellow;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	border: 0;
+	color: #000;
+}
+.ativo_off{
+	padding: 0;
+	background-color: green;
+	width: 100%;
+	cursor: pointer;
+	border: 0;
+	color: #FFF;
+}
+.drop{
+	padding: 0;
+	background-color: red;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	border: 0;
+	color: #FFF;
+}
+.dropEnferm{
+	padding: 0;
+	background-color: red;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	border: 0;
+	color: #FFF;
+}
+.dropDevice{
+	padding: 0;
+	background-color: red;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	border: 0;
+	color: #FFF;
+}
+.meusDados{
+	width: 80%;
+	height: 80%;
+	background-color: red;
+	float: left;
+	text-align: left;
+}
+.meusDados img{
+	position: relative;
+	top: -100px;
+	float: right;
+	width: 200px;
+	height: 200px;
+	resize: none;
+}
+
 .Dashboard-admin h3{
 	text-align: center;
 	float: none;
@@ -21,12 +108,29 @@ thead{
 .terms{
 	margin: 25px;
 	width: 80%;
-	height: 80%;
+	height: 50%;
 }
 .form-cadastro input{
 	float: right;
 	margin-right:90px;
 	width: 60%;
+}
+.login-forgot{
+	position: fixed;
+	width: 500px;
+	border-radius: 3px;
+	padding: 30px;
+	background-color: #00838f;
+	left: 350px;
+	top: 70px;
+	text-align: left;
+	color: #FFF;
+	display: none;
+}
+.login-forgot input{
+	text-align: center;
+	width: 100%;
+	height: 25px;
 }
 .Dashboard-admin-map{
 	margin-top: 40px;
@@ -41,61 +145,63 @@ thead{
 	background-color: #00838f;
 	color: #FFF;
 	display: none;
-	
 	position: relative;
 	float: left;
-	width:640px;
+	width:800px;
 	height:480px;
 	padding-top: 10px;
 	text-align: left;
+	border-radius: 4px;
 }
 .Dashboard-admin-user{
 	margin-top: 40px;
+	background-color: #00838f;
+	color: #FFF;
 	display: none;
-	border: solid;
 	position: relative;
 	float: left;
-	width:640px;
+	width:800px;
 	height:480px;
 	padding-top: 10px;
 	text-align: left;
-	border-color: black;
+	border-radius: 4px;
 }
 .Dashboard-admin-atend{
 	margin-top: 40px;
+	background-color: #00838f;
+	color: #FFF;
 	display: none;
-	border: solid;
 	position: relative;
 	float: left;
 	width:640px;
 	height:480px;
 	padding-top: 10px;
 	text-align: left;
-	border-color: black;
 }
 .Dashboard-admin-device{
 	margin-top: 40px;
+	background-color: #00838f;
+	color: #FFF;
 	display: none;
-	border: solid;
 	position: relative;
 	float: left;
-	width:640px;
+	width:800px;
 	height:480px;
 	padding-top: 10px;
 	text-align: left;
-	border-color: black;
+	border-radius: 4px;
 }
 .Dashboard-admin-emerg{
 	margin-top: 40px;
+	background-color: #00838f;
+	color: #FFF;
 	display: none;
-	border: solid;
 	position: relative;
 	float: left;
 	width:640px;
 	height:480px;
 	padding-top: 10px;
 	text-align: left;
-	border-color: black;
 }
 .Dashboard{
 	margin-top: 40px;
@@ -273,12 +379,21 @@ thead{
 	border: none;
 	background-color: #005761;
 	color: #FFF;
+	cursor: pointer;
 
 }
 .btn-login-forgot{
 	height: 25px;
 	width: 25%;
-	background-color: #00838f;
+	background-color: #005761;
+	border: none;
+	cursor: pointer;
+	color:#FFF;
+}
+.btn-login-forgot-enviar{
+	height: 25px;
+	width: 25%;
+	background-color: #005761;
 	border: none;
 	cursor: pointer;
 	color:#FFF;
@@ -415,14 +530,6 @@ thead{
 .ul-btn{
 	list-style: none;
 }
-.identificador{
-	margin-right: 25px;
-	font-size: 15px;
-	float: right;
-	color: white;
-}
-
-
 
 .flip-card {
   background-color: transparent;

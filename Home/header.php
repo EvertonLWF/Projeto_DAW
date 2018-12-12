@@ -38,11 +38,11 @@ require_once("php/logout.php");
 		<input type="button" class="btn-login" value="Login" placeholder="Login"><br><br>
 		<button class="btn-login-forgot">Esqueci a senha</button>
 	</div>
-	<div class="div-btn">
-		<ul class="ul-btn">
-			<li id="btn5" class="li-btn">Home</li>
-			<li id="btn6" class="li-btn">Medicos</li>
-			<li id="btn7" class="li-btn">Serviços</li>			
-			<li id="btn8" class="li-btn">Login</li>
-		</ul>
-	</div>
+
+	<div class="login-forgot">
+		<form>
+			<h3>Recuperar a senha:</h3>
+			<input type="email" name="email" placeholder="Informe o seu email usado para login"><br><br>
+			<input type="button" class="btn-login-forgot-enviar" value="Enviar"><br><br>
+		</form>
+	</div> 

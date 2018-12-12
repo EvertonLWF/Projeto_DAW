@@ -9,6 +9,7 @@
 		$email = str_replace($sql,"", $email);
 		$res = consulta_mail($email,$pdo);
 		if(isset($res) && !empty($res)){
+			$_SESSION['email']=$email;
 			$array = array('status'=>'ok','mail'=>$email,'id_user'=>$res["id_user"]);
 			
 
@@ -24,10 +25,12 @@
 		$_SESSION['id_user'] = $_POST['id_user'];
 		$senha = ($_POST['senha']);
 		$senha = str_replace($sql, "", $senha);
+		$senha = md5($senha);
 		$res2 = consulta_key($senha,$id_user,$pdo);
 		if(isset($res2) && !empty($res2)){
 			$array = array('status'=>'ok');
 			$_SESSION["id_user"] = $id_user;
+			$_SESSION["senha"] = $senha;
 		}else{
 			$array = array('status'=>'erro');
 		}

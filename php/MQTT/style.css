@@ -1,0 +1,46 @@
+.pub{
+	float: left;
+	position: relative;
+	margin: 10px;
+	padding: 25px;
+	border-style: solid;
+	border-color: green;
+	border-width: 5px; 
+	background-color: #DEDEDE;
+}
+.sub{
+	float: right;
+	position: relative;
+	margin: 10px;
+	padding: 25px;
+	border-style: solid;
+	border-color: blue;
+	border-width: 5px;
+	background-color: #DEDEDE;
+}
+.chart-container {
+	display: none;
+	position: relative;
+	margin: auto;
+	height: 700px;
+	width: 700px;
+}
+#sub_btn{
+	display: none;
+}
+#pub_btn{
+	display: none;
+}
+.temp{
+	position: absolute;
+    top: 116px;
+    left: 276px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    font-size: 50px;
+}
+#h3{
+	text-align: center;
+	margin: 40px;
+}

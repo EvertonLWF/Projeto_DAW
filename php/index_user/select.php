@@ -3,24 +3,31 @@
 	require_once('../conect.php');
 	require_once('../function.php');
 
-	if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])){
+	if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user']) && isset($_SESSION['senha']) && !empty($_SESSION['senha']) && isset($_SESSION['email']) && !empty($_SESSION['email'])){
 		$id_user = $_SESSION['id_user'];
 		$tipo = selectTipo($id_user,$pdo);
-		$etapa = $_SESSION['etapa'];
-		var_dump($tipo);
+		$etapa = $tipo['hash'];
 		switch ($tipo['tipo']) {
 					case 1:
-						if ($etapa == null) {
-							header("location: medic/index.php?etapa=0");
+						if ($etapa == md5("Active")) {
+							header("location: medic/index.php");
 						}else{
-							header("location: medic/index.php?etapa=1");
+							header("location: first_acess.php");
 						}
 						break;
 					case 2:
-						header("location: user/index.php");
+						if ($etapa == md5('Active')) {
+							header("location: user/index.php");
+						}else{
+							header("location: first_acess.php");
+						}
 						break;
 					case 3:
-						header("location: admin/index.php");
+						if ($etapa == md5('Active')) {
+							header("location: admin/index.php");
+						}else{
+							header("location: first_acess.php");
+						}
 						break;
 				}
 	} else {
