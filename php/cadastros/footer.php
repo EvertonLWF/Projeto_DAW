@@ -30,8 +30,10 @@
 				</div>
 			</div>
 		</div>
+		<canvas class="Graphc" id="Graphc" style="display: none;"></canvas>
 		<script type="text/javascript" src="../../jquery-3.3.1.min.js"></script>
 		<script type="text/javascript" src="../../jquery.maskedinput-1.1.4.pack.js"/></script>
+		<script type="text/javascript" src="../Graphic/Chart.js"></script>
 		<script type="text/javascript" src="../../script.js"></script>
 	</body>
 	</html> 

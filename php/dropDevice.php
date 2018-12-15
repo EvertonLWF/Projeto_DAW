@@ -3,9 +3,9 @@
 	if(isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])){
 		require_once('conect.php');
 		require_once('function.php');
-		$topico = $_POST['drop'];
-			
-		$var = dropD($pdo,$topico);
+		$cliente = $_POST['drop'];
+				
+		$var = dropD($pdo,$cliente);
 
 		echo json_encode($var);
 

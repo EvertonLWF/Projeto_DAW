@@ -5,7 +5,7 @@
 		require_once('function.php');
 		$crm = $_POST['off'];
 		
-		$var = block($pdo,$crm);
+		$var = blockE($pdo,$crm);
 
 		echo json_encode($var);
 

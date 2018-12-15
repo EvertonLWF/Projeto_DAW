@@ -1,4 +1,23 @@
-<?php 	
+<?php
+function busca($pdo,$busca){
+	
+	$busca = strtoupper($busca);
+	$busca = '%'.$busca.'%';
+	
+	$sql1 ="SELECT * FROM posto JOIN medicos USING(id_posto) JOIN users USING(id_user) WHERE UPPER(posto.nome) LIKE  :busca	OR
+	UPPER(users.email_user) LIKE :busca OR
+	UPPER(medicos.especialização) LIKE :busca OR
+	TO_CHAR(posto.numero_rua,'99999') LIKE :busca OR
+	UPPER(posto.endereço) LIKE :busca OR  
+	UPPER(posto.cidade) LIKE :busca OR 
+	UPPER(users.nome) LIKE :busca ORDER BY users.nome";
+	$sql1 = $pdo->prepare($sql1);
+	$sql1->bindValue(':busca',$busca);
+	$sql1->execute();
+	$sql1= $sql1->fetchall();
+	
+	return $sql1;
+}	
 
 function consulta_mail($mail,$pdo){
 	$sql = "SELECT * FROM Users WHERE email_user = :email";
@@ -33,7 +52,7 @@ function dropU($pdo,$coren){
 	return $sql; 
 }
 function dropD($pdo,$topico){
-	$sql = "DELETE FROM pacientes WHERE cliente_topico = :topico";
+	$sql = "DELETE FROM pacientes WHERE cliente_iot = :topico";
 	$sql = $pdo->prepare($sql);
 	$sql->bindValue(':topico',$topico);
 	$sql->execute();
@@ -49,6 +68,7 @@ function block($pdo,$crm){
 	return $sql; 
 }
 function unblockE($pdo,$coren){
+	$coren = intval($coren);
 	$sql = "UPDATE enfermeiros SET ative ='HIGH' WHERE coren = :coren";
 	$sql = $pdo->prepare($sql);
 	$sql->bindValue(':coren',$coren);
@@ -56,10 +76,30 @@ function unblockE($pdo,$coren){
 	$sql = $sql->fetch();
 	return $sql; 
 }
+
 function blockE($pdo,$coren){
+	$coren = intval($coren);
 	$sql = "UPDATE enfermeiros SET ative ='LOW' WHERE coren = :coren";
 	$sql = $pdo->prepare($sql);
 	$sql->bindValue(':coren',$coren);
+	$sql->execute();
+	$sql = $sql->fetch();
+	return $sql; 
+}
+function unblockD($pdo,$cliente_iot){
+	//$cliente_iot = intval($cliente_iot);
+	$sql = "UPDATE pacientes SET online ='online' WHERE cliente_iot = :cliente_iot";
+	$sql = $pdo->prepare($sql);
+	$sql->bindValue(':cliente_iot',$cliente_iot);
+	$sql->execute();
+	$sql = $sql->fetch();
+	return $sql; 
+}
+function blockD($pdo,$cliente_iot){
+	//$cliente_iot = intval($cliente_iot);
+	$sql = "UPDATE pacientes SET online ='' WHERE cliente_iot = :cliente_iot";
+	$sql = $pdo->prepare($sql);
+	$sql->bindValue(':cliente_iot',$cliente_iot);
 	$sql->execute();
 	$sql = $sql->fetch();
 	return $sql; 
@@ -117,13 +157,14 @@ function cadastro_etapa_1($tipo,$email,$pdo){
 	$sql = $sql->fetchall();
 	return $sql;
 }
-function cadastroMqtt($pdo,$cliente_iot,$cliente_topico,$cliente_server,$cliente_port){
-	$sql = "INSERT INTO pacientes(cliente_iot,cliente_topico,cliente_server,cliente_port)VALUES(:cliente_iot,:cliente_topico,:cliente_server,:cliente_port)";
+function cadastroMqtt($pdo,$cliente_iot,$cliente_topico,$cliente_server,$cliente_port,$posto){
+	$sql = "INSERT INTO pacientes(cliente_iot,cliente_topico,cliente_server,cliente_port,posto)VALUES(:cliente_iot,:cliente_topico,:cliente_server,:cliente_port,:posto)";
 	$sql = $pdo->prepare($sql);
 	$sql->bindValue(':cliente_topico',$cliente_topico);
 	$sql->bindValue(':cliente_iot',$cliente_iot);
 	$sql->bindValue(':cliente_server',$cliente_server);
 	$sql->bindValue(':cliente_port',$cliente_port);
+	$sql->bindValue(':posto',$posto);
 	$sql->execute();
 	$sql = $sql->fetchall();
 	return $sql;
@@ -164,6 +205,22 @@ function selectEnferm($pdo){
 function selectDevice($pdo){
 	$sql = "SELECT * FROM pacientes";
 	$sql = $pdo->prepare($sql);
+	$sql->execute();
+	$sql = $sql->fetchall();
+	return $sql;
+}
+function selectDeviceOnline($pdo){
+	$sql = "SELECT * FROM pacientes WHERE online ='online'";
+	$sql = $pdo->prepare($sql);
+	$sql->execute();
+	$sql = $sql->fetchall();
+	return $sql;
+}
+function selectDevicePosto($pdo,$posto){
+	$posto = intval($posto);
+	$sql = "SELECT * FROM pacientes WHERE online ='online' AND posto = :posto";
+	$sql = $pdo->prepare($sql);
+	$sql->bindValue(':posto',$posto);
 	$sql->execute();
 	$sql = $sql->fetchall();
 	return $sql;
@@ -235,6 +292,52 @@ function atualizaMedico($pdo,$crm,$esp,$cep,$rua,$num,$posto,$id,$img){
 	$sql = $sql->fetch();
 	return $sql;
 }
+function updateMedico($pdo,$crm,$esp,$cep,$rua,$num,$posto,$id,$img){//alterar aki
+	$ative = "LOW";
+	if($img=='../img/'){
+		$sql = "UPDATE medicos SET crm = :crm,especialização = :esp,cep = :cep,rua = :rua,numero_rua = :num,id_posto = :posto WHERE id_user = :id";
+		$sql = $pdo->prepare($sql);
+		$sql->bindValue(':crm',$crm);
+		$sql->bindValue(':esp',$esp);
+		$sql->bindValue(':cep',$cep);
+		$sql->bindValue(':rua',$rua);
+		$sql->bindValue(':num',$num);
+		$sql->bindValue(':posto',$posto);
+		$sql->bindValue(':id',$id);
+		$sql->execute();
+		$sql = $sql->fetch();
+		return $sql;
+	}else{
+		$sql = "UPDATE medicos SET crm = :crm,especialização = :esp,cep = :cep,rua = :rua,numero_rua = :num,id_posto = :posto,img = :img WHERE id_user = :id";
+		$sql = $pdo->prepare($sql);
+		$sql->bindValue(':crm',$crm);
+		$sql->bindValue(':esp',$esp);
+		$sql->bindValue(':cep',$cep);
+		$sql->bindValue(':rua',$rua);
+		$sql->bindValue(':num',$num);
+		$sql->bindValue(':posto',$posto);
+		$sql->bindValue(':id',$id);
+		$sql->bindValue(':img',$img);
+		$sql->execute();
+		$sql = $sql->fetch();
+		return $sql;
+	}
+	
+}
+function updateEnfermeiro($pdo,$coren,$cep,$rua,$num,$posto,$id){
+	$ative = "LOW";
+	$sql = "UPDATE enfermeiros SET coren = :coren,cep = :cep,rua = :rua,numero_rua = :num,posto = :posto WHERE id_user = :id";
+	$sql = $pdo->prepare($sql);
+	$sql->bindValue(':coren',$coren);
+	$sql->bindValue(':cep',$cep);
+	$sql->bindValue(':rua',$rua);
+	$sql->bindValue(':num',$num);
+	$sql->bindValue(':posto',$posto);
+	$sql->bindValue(':id',$id);
+	$sql->execute();
+	$sql = $sql->fetch();
+	return $sql;
+}
 function atualizaEnferm($pdo,$coren,$cep,$rua,$num,$posto,$id){
 	$ative = "LOW";
 	$sql = "INSERT INTO enfermeiros(rua,numero_rua,cep,coren,id_user,posto,ative) VALUES (:rua,:num,:cep,:coren,:id,:posto,:ative)";
@@ -269,9 +372,9 @@ function card_Ur($pdo){
 			</div>
 			</div>';
 		}
-		
+		echo $html;
 	}
-	return $html;
+	
 }
 function card_Pe($pdo){
 	$html ="";

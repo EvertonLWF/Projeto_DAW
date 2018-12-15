@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html> 
 <head>
 	<meta charset="utf-8">
 	<link href="../../../dist/hamburgers.css" rel="stylesheet">
@@ -14,9 +14,9 @@
 			</div>
 		</div>
 		<ul class="ul">
-			<li id="btn1" class="li">Pacientes</li>
-			<li id="btn2" class="li">Prontuarios</li>
-			<li id="btn3" class="li">Preferências</li>
+			<li id="btn1" class="li">Preferências</li>
+			<li id="btn2" class="li">Prontuários</li>
+			<li id="btn3" class="li">Pacientes</li>
 			<li id="btn4-m" class="sair li">Sair</li>
 		</ul>
 		<form>

@@ -3,21 +3,20 @@
 	if(isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])){
 		require_once('conect.php');
 		require_once('function.php');
-		$crm = intval($_POST['crm']);
-		$esp = $_POST['esp'];
+		$coren = intval($_POST['coren']);
 		$cep = $_POST['cep'];
 		$rua = $_POST['rua'];
 		$num = intval($_POST['num']);
 		$posto = intval($_POST['posto']);
 		$id = intval($_SESSION['id_user']);
-		$img = $_POST['url'];	
-		$_SESSION['posto'] = $posto;	
-		$var = atualizaMedico($pdo,$crm,$esp,$cep,$rua,$num,$posto,$id,$img);
+			
+		$var = updateEnfermeiro($pdo,$coren,$cep,$rua,$num,$posto,$id);
 
 		echo json_encode($var);
 
 	}else{
 		session_destroy();
 		die();
+
 	}
 ?>

@@ -9,10 +9,9 @@ require("phpMQTT.php");
 $topic = $_POST['topic'];
 $server = $_POST['server'];       // change if necessary
 $port = $_POST['port'];           // change if necessary
-$username = $_POST['user_name'];  // set your username
-$password = $_POST['password'];   // set your password
+$username = "";// set your username
+$password = "";   // set your password
 $client_id = $_POST['client_id']; // make sure this is unique for connecting to sever - you could use uniqid()
-
 $mqtt = new phpMQTT($server, $port, $client_id);
 
 if(!$mqtt->connect(true, NULL, $username, $password)) {
@@ -56,6 +55,8 @@ function hasTimedout() {
 	global $start_time;
 	return (time() - $start_time > 10);//waits up to 10 sec 
 }
+	
+	
 
 
 ?>

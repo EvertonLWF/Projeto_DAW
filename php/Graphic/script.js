@@ -8,7 +8,7 @@ $(function() {
         $('#sub_btn').hide();
         $('#send-sub').show();
         clearInterval(interval);
-    });
+    }); 
     $('.sub').bind('submit',function(e){
         e.preventDefault();
         $('.chart-container').show();
@@ -45,7 +45,7 @@ $(function() {
                         options: {
                             animation: {
                                 animateRotate: false,
-                                animateScale: true
+                                animateScale: false
                             }
 
                         }

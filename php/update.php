@@ -10,9 +10,8 @@
 		$num = intval($_POST['num']);
 		$posto = intval($_POST['posto']);
 		$id = intval($_SESSION['id_user']);
-		$img = $_POST['url'];	
-		$_SESSION['posto'] = $posto;	
-		$var = atualizaMedico($pdo,$crm,$esp,$cep,$rua,$num,$posto,$id,$img);
+		$img = $_POST['url'];		
+		$var = updateMedico($pdo,$crm,$esp,$cep,$rua,$num,$posto,$id,$img);
 
 		echo json_encode($var);
 

@@ -9,7 +9,8 @@ if (isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])){
 	$topic =$_POST['topic'];
 	$server =$_POST['server'];
 	$port = intval($_POST['port']);
-	$var = cadastroMqtt($pdo,$id,$topic,$server,$port);
+	$posto =intval($_POST['posto']);
+	$var = cadastroMqtt($pdo,$id,$topic,$server,$port,$posto);
 	
 	echo json_encode($id);
 

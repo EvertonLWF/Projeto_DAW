@@ -2,6 +2,7 @@
 	require_once('../conect.php');
 	require_once('../function.php');
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>

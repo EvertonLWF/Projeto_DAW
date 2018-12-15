@@ -14,12 +14,12 @@ $id = $_SESSION['id_user'];
 		<h3>Seja bem vindo:</h3>
 		<hr>
 		<h4>É necessario alterar a sua senha </h4>
-		<label for="old_key">Confirme sua senha antiga:</label>
-		<input type="password" name="old_key" id="old_key"><br><br>
 		<label for="key">Nova senha:</label>
 		<input type="password" name="key" id="key"><br><br>
 		<label for="keyRep">Repita a senha:</label>
 		<input type="password" name="keyRep" id="keyRep"><br><br>
+		<div id="forca">Força da senha:</div><br><br>
+		
 		<input type="submit" class="submit-firstAcess" value="Salvar">
 	</form>
 </div>
