@@ -1,5 +1,157 @@
+var a =0;
+var b=1;
+var interval;
 var id_user;
+
+ 
+
+
 $(function(){
+
+	var ctx = document.getElementById('Graphc').getContext('2d');
+	var chart = new Chart(ctx,{
+		type: 'line',
+		data: {
+			labels: [],
+			datasets: [{
+				label: [],
+				backgroundColor: 'rgb(255, 99, 132)',
+				borderColor: 'rgb(255, 99, 132)',
+				data: [],
+				fill: false,
+			}],
+		},
+		options: {
+
+			
+			responsive: true,
+
+			title: {
+				display: true,
+				text: 'Trabalho de DAW'
+			},
+			tooltips: {
+				mode: 'index',
+				intersect: true,
+			},
+			hover: {
+				mode: 'nearest',
+				intersect: true
+			},
+			scales: {
+				xAxes: [{
+					display: true,
+					scaleLabel: {
+						display: false,
+						labelString: 'Tempo (segundos)'
+					}
+				}],
+				yAxes: [{
+					display: true,
+					scaleLabel: {
+						display: false,
+						labelString: 'Value'
+					}
+				}]
+			}
+		}
+
+	});
+	function addData(chart, label, data) {
+		chart.data.labels.push(label);
+		chart.data.datasets.forEach((dataset) => {
+			dataset.data.push(data);
+		});
+		chart.update();
+	}
+	function removeData(chart) {
+		chart.data.labels.shift();
+		chart.data.datasets.forEach((dataset) => {
+			dataset.data.shift();
+		});
+		chart.update();
+	}
+	//fechar monitor
+
+	$('.Graphc-sair').bind('click',function(){
+		$('.Dashboard-admin-device-online').show();
+		$('.Dashboard-admin-device-online-mqtt').hide();
+		$('.Dashboard-admin-device-online-mqtt').each(function(){this.reset();})
+	})
+
+	//abrir monitor
+	$('.selectDevice').bind('click',function(e){
+		e.preventDefault();
+		$('.Dashboard-admin-device-online').hide();
+		for (i = 0; i < 8; i++) {
+			removeData(chart);		
+		}
+		$('.Dashboard-admin-device-online-mqtt').show();
+		
+		var dados=[];
+		var txt = $('#h3').text();
+		for (var i = 0 ; i < 4; i++) {
+			dados[i] = $(this).parents('tr').find('td').eq(i).text();
+		}
+		
+		cont = 0;
+		interval = setInterval(function(){
+			$.ajax({
+				type:'POST',
+				url: '../../MQTT/subscribe.php',
+				data: {server:dados[0],topic:dados[1],port:dados[2],client_id:dados[3]},
+				dataType: 'json',
+				success:function(html){
+					
+					a = parseInt(html)-10;
+					b=4;
+					console.log(cont);
+					
+					addData(chart,cont, a);
+					if(a == 4){
+						addData(chart,cont, a);
+					}else{
+						addData(chart,cont, a*-1);
+					}
+					
+					addData(chart,cont, b);
+					addData(chart,cont, b);
+					if(cont<10){
+						cont += 3;
+					}else{
+						for (i = 0; i < 4; i++) {
+							removeData(chart);		
+						}
+					}
+					
+				}
+			});
+		}, 700);
+	});
+
+
+	//Força da senha
+	$('#key').bind('keyup',function(){
+		var txt = $(this).val();
+		var force = 0;
+		
+		if(txt.length > 6){
+			force += 25;
+		}
+		var reg = new RegExp(/[a-z]/i);
+		if(reg.test(txt)){
+			force += 25;
+		}
+		var reg = new RegExp(/[0-9]/i);
+		if(reg.test(txt)){
+			force += 25;
+		}
+		var reg = new RegExp(/[^a-z0-9]/i);
+		if(reg.test(txt)){
+			force += 25;
+		}
+		$('#forca').html('Força da senha:'+force+'%');
+	});
 	$(document).ready(function(){
 		$("#cep").mask("99.999-999");
 	});
@@ -58,6 +210,10 @@ $(function(){
 	$('#btn-admin-device').bind('click',function(){
 		$('.Dashboard-admin').hide();
 		$('.Dashboard-admin-device').toggle();
+	});
+	$('#btn-admin-device-online').bind('click',function(){
+		$('.Dashboard-admin').hide();
+		$('.Dashboard-admin-device-online').toggle();
 	});
 	$('#btn-admin-map').bind('click',function(){
 		$('.Dashboard-admin').hide();
@@ -459,10 +615,43 @@ $(function(){
 			}
 		});
 	});
+	// ações botão  ativar device
+
+	$('.table-devices').on('click','.ativo_on',function(){
+		var on = $(this).parents('tr').find('td').eq(3).text();
+		var $this = $(this);
+		console.log(on)
+		$.ajax({
+			type: 'POST',
+			url: '../../activeDevice.php',
+			data: {on:on},
+			dataType: 'json',
+			success:function(html){
+				alert("Dispositivo desbloqueado");
+				$this.attr('class','ativo_off').text('Ativo');
+			}
+		}); 
+
+	});
+	$('.table-devices').on('click','.ativo_off',function(){
+		var off = $(this).parents('tr').find('td').eq(3).text();
+		var $this = $(this);
+		console.log(off)
+		$.ajax({
+			type: 'POST',
+			url: '../../disabledD.php',
+			data: {off:off},
+			dataType: 'json',
+			success:function(html){
+				alert("Dispositivo bloqueado");
+				$this.attr('class','ativo_on').text('Inativo');
+			}
+		});
+	});
 	$('.table-enferm').on('click','.ativo_on',function(){
 		var on = $(this).parents('tr').find('td').eq(2).text();
 		var $this = $(this);
-		// console.log(on);
+		console.log(on);
 		$.ajax({
 			type: 'POST',
 			url: '../../activeEnferm.php',
@@ -476,20 +665,49 @@ $(function(){
 
 	});
 	$('.table-enferm').on('click','.ativo_off',function(){
-		var off = $(this).parents('tr').find('td').eq(2).text();
-		var $this = $(this);
-		console.log(off);
+	var off = $(this).parents('tr').find('td').eq(2).text();
+	var $this = $(this);
+	console.log(off);
+	$.ajax({
+		type: 'POST',
+		url: '../../disabledEnferm.php',
+		data: {off:off},
+		dataType: 'json',
+		success:function(html){
+			alert("Usuario bloqueado");
+			$this.attr('class','ativo_on').text('Inativo');
+		}
+	});
+});
+// campo busca
+$('.btn').bind('click', function(e){
+	e.preventDefault();
+	if($('.busca-btn').val()==""){
+		alert("campo está vazio");
+		$('.busca-btn').focus();
+	}else{
+		$('.text1').hide();
+		$('.div-busca').show();
+		
+		var busca = $('.busca-btn').val();
 		$.ajax({
-			type: 'POST',
-			url: '../../disabledEnferm.php',
-			data: {off:off},
-			dataType: 'json',
+			type:'POST',
+			url: 'php/busca.php',
+			data: {busca:busca},
+			dataType:'html',
 			success:function(html){
-				alert("Usuario bloqueado");
-				$this.attr('class','ativo_on').text('Inativo');
+				console.log(html);
+				$('.div-busca').html(html);
 			}
 		});
-	});
+	}
+
+});
+$('.btn-sair').bind('click',function(){
+	$('.busca-btn').focus();
+	$('.div-busca').hide();
+	$('.text1').show();
+});
 
 	//botao deletar medicos
 	$('.table-medicos').on('click','.drop',function(){
@@ -523,9 +741,8 @@ $(function(){
 	});
 	//botao deletar devices
 	$('.table-devices').on('click','.dropDevice',function(){
-		var drop = $(this).parents('tr').find('td').eq(1).text();
+		var drop = $(this).parents('tr').find('td').eq(3).text();
 		var $this = $(this);
-		console.log(drop);
 		$.ajax({
 			type:'POST',
 			url:'../../dropDevice.php',
@@ -568,7 +785,63 @@ $(function(){
 			}
 		});
 	});
-	//atualiza dados medico fist acess
+	//update Dados Medico etapa I
+	$('.btn-dados-medico').bind('click',function(){
+		$('.meusDados').hide();
+		$('.atualizarDadosMedico').show();
+	});
+	//Update dados medico etapa II
+	$('#SalvarDadosMedicos').bind('click',function(e){
+		e.preventDefault();
+		var form = document.getElementById('atualizarDadosMedico');
+		var Serial = $('#atualizarDadosMedico').serialize();
+		var formData = new FormData(form);
+		$.ajax({
+			type: 'POST',
+			url: '../../imagem.php',
+			data: formData,
+			dataType: 'json',
+			processData: false,  
+			contentType: false,
+			success:function(html2){
+				document.getElementById('url').value = html2;
+				var Serial = $('#atualizarDadosMedico').serialize();
+				$.ajax({
+					type: 'POST',
+					url: '../../update.php',
+					data: Serial,
+					dataType: 'json',
+					success:function(html){
+						alert("Alteração realizada com sucesso!!");
+						location.reload(true);
+					}
+				});
+			}
+		});
+	});
+	//update Dados enfermeiro etapa I
+	$('.btn-dados-enfermeiro').bind('click',function(){
+		$('.meusDados').hide();
+		$('.atualizarDadosEnferm').show();
+	});
+	//Update dados enfermeiro etapa II
+	$('#SalvarDadosEnferm').bind('click',function(e){
+		e.preventDefault();
+		
+		var Serial = $('#atualizarDadosEnferm').serialize();
+		console.log(Serial);
+		$.ajax({
+			type: 'POST',
+			url: '../../updateU.php',
+			data: Serial,
+			dataType: 'json',
+			success:function(html){
+				alert("Alteração realizada com sucesso!!");
+				location.reload(true);
+			}
+		});
+	});
+	//atualiza dados enfermeiro fist acess
 	$('#atualizar-Enferm').bind('click',function(e){
 		e.preventDefault();
 		var Serial = $('#dados').serialize();
@@ -586,25 +859,46 @@ $(function(){
 	});
 	//enviar email para contato
 
-	// $('.input-cont-btn').bind('click',function(e){
-	// 	e.preventDefault();
-	// 	var email = $('#email').serialize();
-	// 	$.ajax({
-	// 		type: 'POST',
-	// 		url: '../../contato.php',
-	// 		data: {email,email},
-	// 		dataType: 'json',
-	// 		success:function(){
-	// 			alert("Sua mensagem foi enviada com Sucesso!!!");
-	// 		}
-	// 	});
+	$('.input-cont-btn').bind('click',function(e){
+		e.preventDefault();
+		var email = $('#email').serialize();
+		
+		$.ajax({
+			type: 'POST',
+			url: 'php/send.php',
+			data: email,
+			dataType: 'json',
+			success:function(){
+				$('#email').each(function(){this.reset();})
+				alert("Sua mensagem foi enviada com Sucesso!!!");
 
-	// });
+			}
+		});
+
+	});
 
 	//altera senha e redireciona usuarios para seletor
 	$('.submit-firstAcess').bind('click',function(e){
 		e.preventDefault();
-		var old = $('#old_key').val();
+		var txt = $('#key').val();
+		var force = 0;
+		
+		if(txt.length > 6){
+			force += 25;
+		}
+		var reg = new RegExp(/[a-z]/i);
+		if(reg.test(txt)){
+			force += 25;
+		}
+		var reg = new RegExp(/[0-9]/i);
+		if(reg.test(txt)){
+			force += 25;
+		}
+		var reg = new RegExp(/[^a-z0-9]/i);
+		if(reg.test(txt)){
+			force += 25;
+		}
+		var old = $('#key').val();
 		var senha = $('#keyRep').val();
 		if(old == senha){
 			for (var i = 0; i < 4; i++) {
@@ -614,38 +908,54 @@ $(function(){
 					return;
 				}
 			}
+			if(force >= 75){
+				
 
-			var id_user = $('#id_user').val();
-			if (senha != null && id_user != null) {
-				$.ajax({
-					type: 'POST',
-					url: '../keygen.php',
-					data: {senha:senha, id_user,id_user},
-					dataType: "json",
-					success:function(){
-						alert("Sua senha  foi alterada com sucesso! agora você sera redirecionado a sua dashboard.")
-						window.location.assign("select.php");
-					}
+				var id_user = $('#id_user').val();
+				if (senha != null && id_user != null) {
+					$.ajax({
+						type: 'POST',
+						url: '../keygen.php',
+						data: {senha:senha, id_user,id_user},
+						dataType: "json",
+						success:function(){
+							alert("Sua senha  foi alterada com sucesso! agora você sera redirecionado a sua dashboard.")
+							window.location.assign("select.php");
+						}
+					});
+				}
+			}else{
+				alert("Senha digitada é muito fraca!!!!");
+				$('#changeKey').each(function(){
+					this.reset();
+					$('#key').focus();
 				});
+				
 			}
+
 		}else{
+			
 			alert("Senhas digitadas não estão iquais!!!!!");
 			$('#changeKey').each(function(){
 				this.reset();
-				$('#old_key').focus();
+				$('#key').focus();
 			});
+			
 		}
-	})
-	
-});
-var forEach=function(t,o,r){if("[object Object]"===Object.prototype.toString.call(t))for(var c in t)Object.prototype.hasOwnProperty.call(t,c)&&o.call(r,t[c],c,t);else for(var e=0,l=t.length;l>e;e++)o.call(r,t[e],e,t)};
 
-var hamburgers = document.querySelectorAll(".hamburger");
-if (hamburgers.length > 0) {
-	forEach(hamburgers, function(hamburger) {
-		hamburger.addEventListener("click", function() {
-			this.classList.toggle("is-active");
-		}, false);
 	});
-}
 
+
+
+	var forEach=function(t,o,r){if("[object Object]"===Object.prototype.toString.call(t))for(var c in t)Object.prototype.hasOwnProperty.call(t,c)&&o.call(r,t[c],c,t);else for(var e=0,l=t.length;l>e;e++)o.call(r,t[e],e,t)};
+
+	var hamburgers = document.querySelectorAll(".hamburger");
+	if (hamburgers.length > 0) {
+		forEach(hamburgers, function(hamburger) {
+			hamburger.addEventListener("click", function() {
+				this.classList.toggle("is-active");
+			}, false);
+		});
+	}
+
+});

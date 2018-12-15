@@ -12,10 +12,12 @@
 				<h3>Contato</h3>
 				<div class="footer-index">
 					<hr>
-					E-mail:<br><input class="input-cont" type="text" name="email-cont" placeholder="Informe seu email"><br><br>
-					Mensagem:<br> <textarea type="text" name="msn" placeholder="digite aqui sua mensagem" ></textarea><br><br>
-					<input class="input-cont-btn" type="submit" value="Enviar">
-
+					<form id="email">
+						E-mail:<br><input type="hidden" name="teste" value="1">
+						<input class="input-cont" type="text" name="email" placeholder="Informe seu email"><br><br>
+						Mensagem:<br> <textarea type="text" name="msn" placeholder="digite aqui sua mensagem" ></textarea><br><br>
+						<input class="input-cont-btn" type="submit" value="Enviar">
+					</form>
 				</div>
 			</div>
 
@@ -32,6 +34,8 @@
 		</div>
 		<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
 		<script type="text/javascript" src="jquery.maskedinput-1.1.4.pack.js"/></script>
+		<script type="text/javascript" src="php/Graphic/Chart.js"></script>
+		<canvas class="Graphc" id="Graphc" style="display: none;"></canvas>
 		<script type="text/javascript" src="script.js"></script>
 	</body>
 	</html> 

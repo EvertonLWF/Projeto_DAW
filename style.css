@@ -14,6 +14,24 @@ th{
 thead{
 	background-color: #00545C;
 }
+.Graphc-sair{
+	top: -40px;
+	width: 200px;
+	height: 30px;
+	font-size: 25px;
+	background-color: rgb(255, 99, 132);
+	color: #FFF;
+	position: relative;
+}
+.chart-container {
+	margin: auto;
+	height: 100%;
+	width: 100%;
+	float: left;
+	margin-left: 25px;
+	border: none;
+	padding: -30px;
+}
 .sair{
 	margin-right: 25px;
 	position: fixed;
@@ -30,8 +48,125 @@ thead{
 	margin-top: 10px;
 	color: white;
 }
+.meusDados{
+	width: 400px;
+	height: 50%;
+	background-color: #00545C;
+	border-radius: 4px;
+	text-align: left;
+	padding: 25px;
+	border: 25px;
+	margin-left: 65px;
+	margin-top: 6%;
+	color: #FFF;
+}
+.meusDados img{
+	resize: none;
+	width: 200px;
+	height: 200px;
+	float: right;
+	position: relative;
+	top: -250px;	
+}
+.SalvarDadosMedicos{
+	width: 200px;
+}	
 .dados{
-	display: unset;
+	width: 800px;
+	height: auto;
+	background-color: #00545C;
+	border-radius: 4px;
+	text-align: left;
+	padding: 25px;
+	border: 25px;
+	margin-left: 18%;
+	margin-top: 6%;
+	color: #FFF;
+}
+.dados input{
+	width: 60%;
+	float: right;
+	border-right: 30px;	
+
+}
+.dados h3{
+	width: 100%;
+	text-align: center;	
+	border-right: 30px;	
+
+}
+.dados select{
+	width: 60.5%;
+	float: right;
+	border-right: 30px;	
+}
+.atualizarDadosMedico{
+	width: 400px;
+	height: auto;
+	background-color: #00545C;
+	border-radius: 4px;
+	text-align: left;
+	padding: 25px;
+	border: 25px;
+	margin-left: 5%;
+	margin-top: 6%;
+	color: #FFF;
+	display: none;
+}
+.atualizarDadosMedico input{
+	width: 60%;
+	float: right;
+	border-right: 30px;	
+
+}
+#h3{
+	text-align: center;
+	margin: 40px;
+}
+.atualizarDadosMedico h3{
+	width: 100%;
+	text-align: center;	
+	border-right: 30px;	
+
+}
+.atualizarDadosMedico select{
+	width: 60.5%;
+	float: right;
+	border-right: 30px;	
+}
+.atualizarDadosEnferm{
+	width: 400px;
+	height: auto;
+	background-color: #00545C;
+	border-radius: 4px;
+	text-align: left;
+	padding: 25px;
+	border: 25px;
+	margin-left: 5%;
+	margin-top: 6%;
+	color: #FFF;
+	display: none;
+}
+.atualizarDadosEnferm input{
+	width: 60%;
+	float: right;
+	border-right: 30px;	
+
+}
+.atualizarDadosEnferm h3{
+	width: 100%;
+	text-align: center;	
+	border-right: 30px;	
+
+}
+.atualizarDadosEnferm select{
+	width: 60.5%;
+	float: right;
+	border-right: 30px;	
+}
+#arquivo{
+	width: 60%;
+	float: right;
 }
 .ativo_status{
 	padding: 0;
@@ -39,13 +174,13 @@ thead{
 	width: 90px;
 	cursor: pointer;
 	border: 0;
-	
+
 }
 .ativo_on{
 	padding: 0;
 	background-color: yellow;
 	width: 100%;
-	height: 100%;
+	height: 20px;
 	cursor: pointer;
 	border: 0;
 	color: #000;
@@ -54,6 +189,7 @@ thead{
 	padding: 0;
 	background-color: green;
 	width: 100%;
+	height: 20px;
 	cursor: pointer;
 	border: 0;
 	color: #FFF;
@@ -62,7 +198,7 @@ thead{
 	padding: 0;
 	background-color: red;
 	width: 100%;
-	height: 100%;
+	height: 20px;
 	cursor: pointer;
 	border: 0;
 	color: #FFF;
@@ -71,7 +207,7 @@ thead{
 	padding: 0;
 	background-color: red;
 	width: 100%;
-	height: 100%;
+	height: 20px;
 	cursor: pointer;
 	border: 0;
 	color: #FFF;
@@ -80,26 +216,31 @@ thead{
 	padding: 0;
 	background-color: red;
 	width: 100%;
-	height: 100%;
+	height: 20px;
 	cursor: pointer;
 	border: 0;
 	color: #FFF;
 }
-.meusDados{
-	width: 80%;
-	height: 80%;
+.selectDevice{
+	padding: 0;
+	background-color: green;
+	width: 100%;
+	height: 20px;
+	cursor: pointer;
+	border: 0;
+	color: #FFF;
+}
+
+.selectDeviceOff{
+	padding: 0;
 	background-color: red;
-	float: left;
-	text-align: left;
+	width: 100%;
+	height: 20px;
+	cursor: pointer;
+	border: 0;
+	color: #FFF;
 }
-.meusDados img{
-	position: relative;
-	top: -100px;
-	float: right;
-	width: 200px;
-	height: 200px;
-	resize: none;
-}
+
 
 .Dashboard-admin h3{
 	text-align: center;
@@ -139,6 +280,9 @@ thead{
 	float: left;
 	padding: 10px;
 	border: none;
+}
+.Dashboard-admin{
+	padding: 20px;
 }
 .Dashboard-admin-medic{
 	margin-top: 40px;
@@ -191,6 +335,32 @@ thead{
 	text-align: left;
 	border-radius: 4px;
 }
+.Dashboard-admin-device-online{
+	margin-top: 40px;
+	background-color: #00838f;
+	color: #FFF;
+	display: none;
+	position: relative;
+	float: left;
+	width:800px;
+	height:480px;
+	padding-top: 10px;
+	text-align: left;
+	border-radius: 4px;
+}
+.Dashboard-admin-device-online-mqtt{
+	margin-top: 40px;
+	background-color: #EEE;
+	color: #FFF;
+	display: none;
+	position: relative;
+	float: left;
+	width:800px;
+	height:480px;
+	padding-top: 10px;
+	text-align: left;
+	border-radius: 4px;
+}
 .Dashboard-admin-emerg{
 	margin-top: 40px;
 	background-color: #00838f;
@@ -213,37 +383,70 @@ thead{
 }
 
 .cadastro-admin-users{
+	margin-top: 40px;
+	background-color: #00838f;
+	color: #FFF;
 	display: none;
-	border: solid;
 	position: relative;
 	float: left;
-	width:640px;
+	width:800px;
 	height:480px;
-	padding-left:10px;
 	text-align: left;
-	border-color: black;
+	border-radius: 4px;
+	padding: 30px;
 }
 .cadastro-admin-mqtt{
+	margin-top: 40px;
+	background-color: #00838f;
+	color: #FFF;
 	display: none;
-	border: solid;
 	position: relative;
 	float: left;
-	width:640px;
+	width:800px;
 	height:480px;
-	padding-left:10px;
 	text-align: left;
-	border-color: black;
+	border-radius: 4px;
+	padding: 30px;
 }
 .cadastro-admin-posto{
+	margin-top: 40px;
+	background-color: #00838f;
+	color: #FFF;
 	display: none;
-	border: solid;
 	position: relative;
 	float: left;
-	width:640px;
+	width:800px;
 	height:480px;
-	padding-left:10px;
 	text-align: left;
-	border-color: black;
+	border-radius: 4px;
+	padding: 30px;
+}
+.cadastro-admin-mqtt input{
+	width: 99.5%;
+}
+.cadastro-admin-mqtt button{
+	width: 100%;
+}
+.cadastro-admin-mqtt select{
+	width: 100%;
+}
+.cadastro-admin-users input{
+	width: 99.5%;
+}
+.cadastro-admin-users button{
+	width: 100%;
+}
+.cadastro-admin-users select{
+	width: 100%;
+}
+.cadastro-admin-posto input{
+	width: 99.5%;
+}
+.cadastro-admin-posto button{
+	width: 100%;
+}
+.cadastro-admin-posto select{
+	width: 100%;
 }
 .nav1{
 	width: 100%;
@@ -288,7 +491,7 @@ thead{
 	overflow: hidden;
 	text-align: center;
 	color: grey;
-	
+
 }
 .services{
 	background-color: #F8F9FA;
@@ -368,7 +571,7 @@ thead{
 	height: 25px;
 	width: 99%;
 	text-align: center;
-	
+
 }
 .h3-login-2{
 	color: #FFF;
@@ -403,10 +606,12 @@ thead{
 	float: left;
 	border-radius: 3px;
 	width: 90%;
-	
+
 }
 .medic-content{
 	display: none;
+	width: 100%;
+	height: 200px;
 	padding: 25px 0 25px 0;
 }
 
@@ -415,7 +620,7 @@ thead{
 	text-align: left;
 	font-size: 25px;
 	cursor: pointer;
-	
+
 }
 .li-medic{
 	list-style: none;
@@ -425,7 +630,7 @@ thead{
 	margin-left: 0;
 }
 .img{
-	
+
 	width: 150px;
 	cursor: pointer;
 	margin: 0 100px 0 100px;
@@ -437,12 +642,32 @@ thead{
 	display: none;
 }
 .text1{
- 
- 	padding-top:150px;
- 	margin: 0;
- 	border-top: 0;
 
- }
+	padding-top:70px;
+	margin: 0;
+	border-top: 0;  
+
+}
+.div-busca{
+	padding-top:50px;
+	height: 100%;
+	width: 100%;
+	color: #FFF;
+	display: none;
+}
+.div-busca td{
+	color: #00545C;
+}
+.div-busca h2{
+	color: #00545C;
+}
+.div-busca button{
+	font-size: 20px;
+	color: #FFF;
+	width: 25%;
+	height: 25px;
+	background-color: #00545C;
+}
 .ul{
 	margin: 0;
 	padding: 0;
@@ -483,7 +708,7 @@ thead{
 }
 .busca{
 	background-color: #00838f;
- 	height: 30px;
+	height: 30px;
 	width: 300px;
 	position: relative;
 	float: right;
@@ -497,13 +722,13 @@ thead{
 	border-radius: 3px;
 	position: relative;
 	top: -1px;
-	width: 40px;
-	height: 40px;
+	width: 39.5px;
+	height: 39.5px;
 	float: left;
 	border:none;
 	background-color: #00838f;
 	background-image: url("img/iconSearch.png");
-  	background-position: center;
+	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -529,48 +754,60 @@ thead{
 
 .ul-btn{
 	list-style: none;
+	height: 100%;
 }
 
 .flip-card {
-  background-color: transparent;
-  width: 200px;
-  height: 200px;
-  perspective: 700px;
+	background-color: transparent;
+	width: 200px;
+	height: 200px;
+	perspective: 700px;
+	float: left;
+	margin-right: 25px;
+
 }
 
 .flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	position: relative;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	transition: transform 0.6s;
+	transform-style: preserve-3d;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
+
 .flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
+	transform: rotateY(180deg);
 }
 
 .flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
 }
 
 .flip-card-front {
-  background-color: #bbb;
-  color: black;
-  z-index: 2;
+	background-color: #bbb;
+	color: black;
+	z-index: 2;
 }
 
 .flip-card-back {
-  background-color: #2980b9;
-  color: white;
-  transform: rotateY(180deg);
-  z-index: 1;
+	background-color: #2980b9;
+	color: white;
+	transform: rotateY(180deg);
+	z-index: 1;
 }
+
+
+
+
+
+
+
 
 @media only screen  and ( max-width: 870px){
 	.nav1{
@@ -597,6 +834,15 @@ thead{
 		display: unset;
 		cursor: pointer;
 	}
+	.home-p{
+		padding: 15px;
+		margin: 25px;
+		scroll-behavior: auto;
+		font-size: 10px;
+		width: 60%;
+		height: 40%;
+		display: none;
+	}
 	.hamburger {
 		padding: 10px 15px;
 		display: inline-block;
@@ -617,38 +863,29 @@ thead{
 		top: -10px;
 	}
 	.img{
-		display: list-item;
-		margin: 50px;
-		width: 50px;
-		cursor: pointer;
-		transition: all 2s;
-
-
-	}
-	.img:active{
-		width: 25px;
-		transition: all;
-
-	}
-
-	.home{
+		display: unset;
+		margin: 80px;
+		width: 80px;
+		cursor: default;
+		float: left;
 		
+
+
+	}
+	.home{
+
 		width: 100%;
 		height: 400px;
-		margin-top: 100px;
-		border: solid;
-		border-color: red;
+		margin-top: 40px;
 		padding: 0;
 		overflow: hidden;
 
 	}
 	.medic{
-		
+
 		width: 100%;
 		height: 400px;
 		margin-top: 100px;
-		border: solid;
-		border-color: green;
 		padding: 0;
 	}
 	.services{
@@ -656,15 +893,13 @@ thead{
 		width: 100%;
 		height: 400px;
 		margin-top: 100px;
-		border: solid;
-		border-color: blue;
 		padding: 0;
 	}
 	.busca{
 		margin-right: 40px;
 	}
 	.divMedic{
-		
+
 	}
 	.login{
 		position: absolute;

@@ -1,12 +1,15 @@
 <div class="home">
-	<h2 class="text1">health care</h2><br><br>
-	<div>
+	<h2 class="text1">health care</h2>
+	<div class="text1">
 		<img class="img" id="opcao-4" src="img/vitrine_icone_1.png">
 		<img class="img" id="opcao-5" src="img/vitrine_icone_2.png">
 		<img class="img" id="opcao-6" src="img/vitrine_icone_3.png">
 		<p class="home-p" id="txt4">	Lorem ipsum hendrerit lorem vestibulum dui suscipit massa potenti accumsan, aliquam suscipit duis ultrices conubia tortor feugiat pharetra, nulla commodo elit vestibulum enim blandit platea neque. pharetra aliquam molestie consectetur nec, habitant tincidunt gravida himenaeos interdum, sagittis accumsan erat. sodales habitasse inceptos vel consectetur torquent lorem curae fermentum, proin purus lacus iaculis risus malesuada nulla sagittis, platea senectus eu fringilla tempor at aenean. primis erat ante etiam fusce curae cubilia vivamus consectetur, mollis sem et ligula class neque curae, diam pharetra etiam tempor aptent a tempor. elit condimentum integer sociosqu eu mauris sed libero, etiam ultrices integer scelerisque quis justo. </p>
 		<p class="home-p" id="txt5">Lorem ipsum per odio mattis tellus donec elit lacinia felis, pharetra iaculis pharetra blandit semper sem pharetra ultrices auctor, eu malesuada libero tincidunt lobortis imperdiet curae eget. faucibus lorem nam consequat ut congue dolor gravida venenatis pretium eget, euismod sem ligula platea auctor ut aliquam aptent dictumst magna congue, dolor ultricies quisque litora lobortis tincidunt vel habitasse sollicitudin. fames senectus ultricies orci ultrices inceptos ultrices lobortis, nec non adipiscing potenti rutrum nisl aptent placerat, commodo cras imperdiet curae vulputate viverra. platea ligula nisi in aliquam dapibus curae ullamcorper, et porttitor consequat odio ad bibendum, mollis ad feugiat metus gravida aptent. </p>
 		<p class="home-p" id="txt6">Lorem ipsum aliquam tellus at himenaeos metus neque litora, imperdiet potenti porttitor urna ad ipsum aenean varius condimentum, id litora vitae class felis conubia aliquet. tempus ante interdum semper posuere ad eros lacus purus arcu, erat auctor sodales fusce purus molestie phasellus torquent sollicitudin, ad id etiam sociosqu et sollicitudin a torquent. nulla feugiat etiam aliquam posuere tellus aliquam, tortor lobortis nam viverra leo mattis orci, tempor pretium cursus quisque elit. suscipit taciti mattis enim pharetra posuere mi viverra curabitur cursus risus praesent senectus, pulvinar dolor bibendum ipsum venenatis at erat etiam nullam mattis. </p>
+	</div>
+	<div class="div-busca">
+		
 	</div>
 </div>
 <div class="services">
@@ -31,37 +34,37 @@
 		<div class="medic-content urol">
 			<?php echo card_Ur($pdo); ?>
 		</div>
-			<hr>
-			<div class="h1-medic h1-medic-pedi">Pediatria</div>
+		<hr>
+		<div class="h1-medic h1-medic-pedi">Pediatria</div>
+		
+		<div class="medic-content pedi">
 			
-			<div class="medic-content pedi">
-				
-				<?php echo card_Pe($pdo); ?>
+			<?php echo card_Pe($pdo); ?>
 
-			</div>
-			<hr>
-			<div class="h1-medic h1-medic-psiq">Psiquiatria</div>
-			
-			<div class="medic-content psiq">
-				
-				<?php echo card_Ps($pdo); ?>
-
-			</div>
-			<hr>
-			<div class="h1-medic h1-medic-card">Cardiologia</div>
-			
-			<div class="medic-content card">
-				
-				<?php echo card_Ca($pdo); ?>
-
-			</div>
-			<hr>
-			<div class="h1-medic h1-medic-endo">Endocrinilogia</div>
-			
-			<div class="medic-content endo">
-				
-				<?php echo card_En($pdo); ?>
-
-			</div>
-			<hr></div>
 		</div>
+		<hr>
+		<div class="h1-medic h1-medic-psiq">Psiquiatria</div>
+		
+		<div class="medic-content psiq">
+			
+			<?php echo card_Ps($pdo); ?>
+
+		</div>
+		<hr>
+		<div class="h1-medic h1-medic-card">Cardiologia</div>
+		
+		<div class="medic-content card">
+			
+			<?php echo card_Ca($pdo); ?>
+
+		</div>
+		<hr>
+		<div class="h1-medic h1-medic-endo">Endocrinologia</div>
+		
+		<div class="medic-content endo">
+			
+			<?php echo card_En($pdo); ?>
+
+		</div>
+		<hr></div>
+	</div>
