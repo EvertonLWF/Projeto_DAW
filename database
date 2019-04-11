@@ -1,0 +1,90 @@
+CREATE TABLE Telefone (
+    Fone VARCHAR(10),
+    Id_User INTEGER
+)
+
+CREATE TABLE Enfermeiro (
+    Rua VARCHAR(255),
+    Numero_Rua int(255),
+    Cep int,
+    Coren INTEGER PRIMARY KEY
+)
+
+CREATE TABLE Emergencia (
+    Endereço VARCHAR(255),
+    Nome VARCHAR(255),
+    Id_Emergencia INTEGER PRIMARY KEY,
+    Status VARCHAR(10)
+)
+
+CREATE TABLE Monitor (
+    ID_monitor SERIAL PRIMARY KEY,
+    Status VARCHAR(10),
+    Id_cliente int
+)
+
+CREATE TABLE Users (
+    Id_User SERIAL PRIMARY KEY,    
+    Tipo INTEGER,
+    Email_User VARCHAR(255),
+    Key_user VARCHAR(255),
+    Nome VARCHAR(255)
+)
+
+CREATE TABLE Prescrição (
+    Id_presc SERIAL PRIMARY KEY,
+    nome VARCHAR(255),
+    descritivo VARCHAR(255),
+    Id_cliente INTEGER
+)
+
+CREATE TABLE Medico (
+    CRM INTEGER PRIMARY KEY,
+    Especialização VARCHAR(255),
+    Cep INTEGER(8),
+    Rua VARCHAR(255),
+    Numero_Rua int,
+    Id_posto INTEGER
+)
+
+CREATE TABLE Posto (
+    Id_posto SERIAL PRIMARY KEY,
+    Cidade VARCHAR(255),
+    Endereço VARCHAR(255),
+    Numero_Rua INTEGER
+
+)
+
+CREATE TABLE Paciente (
+    Id_cliente SERIAL PRIMARY KEY,
+    Nome VARCHAR(255),
+    MQTT_data VARCHAR(255),
+    Topico VARCHAR(255),
+    Numero_SUS INTEGER
+)
+
+CREATE TABLE Historico_Paciente (
+    Id_historico SERIAL PRIMARY KEY,
+    Prontuario VARCHAR(255),
+    Id_cliente INTEGER,
+    FOREIGN KEY(Id_cliente) REFERENCES Paciente (Id_cliente)
+)
+
+CREATE TABLE Admin/Monitor (
+    Id_User INTEGER,
+    ID_monitor INTEGER,
+    FOREIGN KEY(Id_User) REFERENCES Users (Id_User),
+    FOREIGN KEY(ID_monitor) REFERENCES Monitor (ID_monitor)
+)
+
+CREATE TABLE Emergencia_Monitor(
+    Id_Emergencia INTEGER,
+    ID_monitor INTEGER,
+    FOREIGN KEY(Id_Emergencia) REFERENCES Emergencia (Id_Emergencia),
+    FOREIGN KEY(ID_monitor) REFERENCES Monitor (ID_monitor)
+)
+
+ALTER TABLE Telefone ADD FOREIGN KEY(Id_User) REFERENCES Users (Id_User)
+ALTER TABLE Monitor ADD FOREIGN KEY(Id_cliente) REFERENCES Paciente (Id_cliente)
+ALTER TABLE Prescrição ADD FOREIGN KEY(Id_cliente) REFERENCES Paciente (Id_cliente)
+ALTER TABLE Medico ADD FOREIGN KEY(Id_posto) REFERENCES Posto (Id_posto)
